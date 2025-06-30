@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Orders & Shipping - RekietaLabs Support</title>
+  <link rel="icon" href="IMG_0926.jpeg" type="image/jpeg" />
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background-color: #121212;
+      color: #f0f0f0;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #1e1e1e;
+      border-bottom: 1px solid #333;
+    }
+
+    header img {
+      height: 48px;
+    }
+
+    header a.back {
+      color: #ffe066;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    h2 {
+      color: #ffe066;
+    }
+
+    .faq {
+      margin-bottom: 1rem;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .faq summary {
+      background-color: #1f1f1f;
+      padding: 1rem;
+      cursor: pointer;
+      font-weight: bold;
+      list-style: none;
+    }
+
+    .faq summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq[open] summary {
+      background-color: #292929;
+    }
+
+    .faq div.answer {
+      padding: 1rem;
+      background-color: #1b1b1b;
+      border-top: 1px solid #333;
+    }
+
+    a {
+      color: #80bfff;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 1rem;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="IMG_0926.jpeg" alt="RekietaLabs Logo" />
+    <a href="index.html" class="back">← Back to Home</a>
+  </header>
+
+  <div class="container">
+    <h2>Orders & Shipping</h2>
+
+    <details class="faq">
+      <summary>1. How can I track my order?</summary>
+      <div class="answer">
+        <p>As of right now, customers <strong>cannot track orders directly online.</strong></p>
+        <p>If you’d like to check your order status, please email our Orders Support Team at:</p>
+        <p><strong>📧 orders@rekietalabs.com</strong></p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>2. How long does shipping take?</summary>
+      <div class="answer">
+        <p>Shipping from our business to your home typically takes <strong>2 to 5 business days.</strong></p>
+        <p>If you do not receive your product within this time frame, please email our Orders Support Team at:</p>
+        <p><strong>📧 orders@rekietalabs.com</strong></p>
+        <p>If your package is returned to our business address, we will notify you at the email provided during checkout.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>3. Do you ship internationally?</summary>
+      <div class="answer">
+        <p>No. We currently <strong>only ship within the United States.</strong></p>
+        <p>We do not ship internationally at this time. This includes countries such as Canada, Mexico, United Kingdom, Australia, Germany, France, India, China, Japan, Brazil, and more.</p>
+        <p>If you are outside the United States, we are unfortunately unable to fulfill your order right now.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>4. My package arrived damaged — what do I do?</summary>
+      <div class="answer">
+        <p>If your package arrives <strong>damaged</strong> or <strong>misshaped</strong>, please email our Orders Support Team at:</p>
+        <p><strong>📧 orders@rekietalabs.com</strong></p>
+        <p>To help us resolve your issue quickly, provide photos showing the condition of the product and include your order number if available.</p>
+        <p>Once we verify the damage, we’ll issue either a <strong>refund</strong> or a <strong>replacement</strong>.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>5. Can I change my shipping address after placing an order?</summary>
+      <div class="answer">
+        <p>No. Once an order is placed, you <strong>cannot change the shipping address.</strong></p>
+        <p>Please make sure your shipping information is correct before completing your purchase.</p>
+      </div>
+    </details>
+
+  </div>
+</body>
+</html>
