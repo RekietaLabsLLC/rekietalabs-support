@@ -1,98 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RekietaLabs Support</title>
-  <link rel="icon" href="IMG_0926.jpeg" type="image/jpeg" />
-  <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background-color: #121212;
-      color: #f0f0f0;
-    }
-
-    header {
-      display: flex;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RekietaLabs Support Portal</title>
+<link rel="icon" href="IMG_0926.jpeg" type="image/jpeg" />
+<style>
+  body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background-color: #121212;
+    color: #f0f0f0;
+  }
+  header {
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #1e1e1e;
+    border-bottom: 1px solid #333;
+  }
+  header img {
+    height: 48px;
+    margin-right: 1rem;
+  }
+  header h1 {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  .container {
+    max-width: 900px;
+    margin: 1rem auto 3rem;
+    padding: 0 1rem;
+  }
+  .search-bar {
+    margin: 1.5rem 0;
+  }
+  .search-bar input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background-color: #292929;
+    color: #f0f0f0;
+  }
+  .results {
+    margin-bottom: 2rem;
+  }
+  .result-item {
+    background-color: #1f1f1f;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.8rem;
+    cursor: default;
+  }
+  .result-item strong {
+    color: #ffe066;
+  }
+  .categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  .category {
+    background-color: #1f1f1f;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    min-width: 220px;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #ffe066;
+    text-decoration: none;
+    user-select: none;
+    transition: background-color 0.2s;
+  }
+  .category:hover {
+    background-color: #292929;
+  }
+  @media (max-width: 600px) {
+    .categories {
+      flex-direction: column;
       align-items: center;
-      padding: 1rem 2rem;
-      background-color: #1e1e1e;
-      border-bottom: 1px solid #333;
     }
-
-    header img {
-      height: 48px;
-      margin-right: 1rem;
-    }
-
-    h1 {
-      font-size: 1.5rem;
-      margin: 0;
-    }
-
-    .container {
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-    }
-
     .category {
-      background-color: #1f1f1f;
-      padding: 1rem;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-      transition: background 0.2s;
+      min-width: 100%;
     }
-
-    .category:hover {
-      background-color: #292929;
-    }
-
-    .category a {
-      color: #ffe066;
-      text-decoration: none;
-      font-size: 1.1rem;
-    }
-
-    @media (max-width: 600px) {
-      .container {
-        padding: 1rem;
-      }
-
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      h1 {
-        margin-top: 0.5rem;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <header>
-    <img src="IMG_0926.jpeg" alt="RekietaLabs Logo" />
-    <h1>RekietaLabs Support</h1>
-  </header>
+<header>
+  <img src="IMG_0926.jpeg" alt="RekietaLabs Logo" />
+  <h1>RekietaLabs Support</h1>
+</header>
 
-  <div class="container">
-    <div class="category">
-      <a href="account-security.html">🔐 Account & Security</a>
-    </div>
-
-    <div class="category">
-      <a href="billing.html">💳 Billing & Subscriptions</a>
-    </div>
-
-    <div class="category">
-      <a href="orders.html">📦 Orders & Shipping</a>
-    </div>
-
-    <div class="category">
-      <a href="market.html">🌐 Market & Marketplace</a>
-    </div>
+<div class="container">
+  <div class="search-bar">
+    <input type="search" id="searchInput" placeholder="Search FAQs or categories..." aria-label="Search FAQs or categories" />
   </div>
+
+  <div class="results" id="results">
+    <!-- Search results will appear here -->
+  </div>
+
+  <div class="categories">
+    <a href="account-security.html" class="category">🔐 Account & Security</a>
+    <a href="billing.html" class="category">💳 Billing & Subscriptions</a>
+    <a href="orders.html" class="category">📦 Orders & Shipping</a>
+    <a href="market.html" class="category">🌐 Market & Marketplace</a>
+    <a href="technical.html" class="category">🛠️ Technical Support</a>
+  </div>
+</div>
+
+<!-- Fuse.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
+<script>
+  // Flatten data: one item per question with category and link
+  const faqItems = [
+    { category: "Account & Security", question: "How do I reset my password?", link: "account-security.html" },
+    { category: "Account & Security", question: "How do I change my account email?", link: "account-security.html" },
+    { category: "Account & Security", question: "Why was my account banned or suspended?", link: "account-security.html" },
+    { category: "Account & Security", question: "How do I delete my account?", link: "account-security.html" },
+    { category: "Account & Security", question: "What if I didn’t receive an email verification?", link: "account-security.html" },
+
+    { category: "Billing & Subscriptions", question: "What payment methods do you accept?", link: "billing.html" },
+    { category: "Billing & Subscriptions", question: "Can I cancel or refund an order?", link: "billing.html" },
+    { category: "Billing & Subscriptions", question: "What happens if I am charged twice?", link: "billing.html" },
+    { category: "Billing & Subscriptions", question: "When am I charged for my order?", link: "billing.html" },
+    { category: "Billing & Subscriptions", question: "Can I get a refund on my purchase?", link: "billing.html" },
+
+    { category: "Orders & Shipping", question: "Can I track my order myself?", link: "orders.html" },
+    { category: "Orders & Shipping", question: "How long does shipping take?", link: "orders.html" },
+    { category: "Orders & Shipping", question: "Do you ship internationally?", link: "orders.html" },
+    { category: "Orders & Shipping", question: "What if my package arrives damaged?", link: "orders.html" },
+    { category: "Orders & Shipping", question: "Can I change my shipping address after ordering?", link: "orders.html" },
+
+    { category: "Market & Marketplace", question: "What is RekietaLabs Marketplace?", link: "market.html" },
+    { category: "Market & Marketplace", question: "Are models on the Marketplace free?", link: "market.html" },
+    { category: "Market & Marketplace", question: "Can I charge for my uploaded models?", link: "market.html" },
+    { category: "Market & Marketplace", question: "Do I need a MyLabs account to download?", link: "market.html" },
+    { category: "Market & Marketplace", question: "How do I submit a custom design request?", link: "market.html" },
+
+    { category: "Technical Support", question: "How do I download files from the Marketplace?", link: "technical.html" },
+    { category: "Technical Support", question: "What should I do if a download is corrupted or won’t open?", link: "technical.html" },
+    { category: "Technical Support", question: "Which software do I need to open 3D model files?", link: "technical.html" },
+    { category: "Technical Support", question: "How do I report a bug or technical issue on the website?", link: "technical.html" },
+    { category: "Technical Support", question: "Is RekietaLabs compatible with mobile devices?", link: "technical.html" }
+  ];
+
+  // Fuse options
+  const options = {
+    keys: ["question", "category"],
+    threshold: 0.3, // Lower = more exact matches; higher = more fuzzy
+  };
+
+  const fuse = new Fuse(faqItems, options);
+
+  const searchInput = document.getElementById("searchInput");
+  const resultsDiv = document.getElementById("results");
+
+  function clearResults() {
+    resultsDiv.innerHTML = "";
+  }
+
+  function createResultItem(item) {
+    const div = document.createElement("div");
+    div.className = "result-item";
+    div.innerHTML = `<strong>${item.category}:</strong> ${item.question} <br><a href="${item.link}" style="color:#80bfff; text-decoration:underline;" target="_blank" rel="noopener noreferrer">Go to category page</a>`;
+    return div;
+  }
+
+  searchInput.addEventListener("input", () => {
+    const query = searchInput.value.trim();
+    clearResults();
+
+    if (query.length === 0) {
+      return; // Show no results if empty search
+    }
+
+    const results = fuse.search(query);
+
+    if (results.length === 0) {
+      resultsDiv.innerHTML = "<p>No results found.</p>";
+      return;
+    }
+
+    results.forEach(result => {
+      const item = createResultItem(result.item);
+      resultsDiv.appendChild(item);
+    });
+  });
+</script>
 </body>
 </html>
