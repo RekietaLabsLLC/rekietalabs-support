@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Ticket</title>
+</head>
+<body>
+  <h1>Create a Support Ticket</h1>
+  <form action="/ticket/create" method="POST">
+    <label for="name">Name *</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+    
+    <label for="reason">Ticket Reason *</label><br>
+    <textarea id="reason" name="reason" required></textarea><br><br>
+    
+    <label for="email">Email *</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+    
+    <label for="phone">Phone (Optional)</label><br>
+    <input type="tel" id="phone" name="phone"><br><br>
+    
+    <label for="refid">Reference ID (Optional)</label><br>
+    <input type="text" id="refid" name="refid"><br><br>
+    
+    <button type="submit">Submit Ticket</button>
+  </form>
+</body>
+</html>
