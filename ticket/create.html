@@ -4,26 +4,81 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Create Ticket</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      padding: 40px;
+    }
+
+    .ticket-container {
+      background-color: white;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background-color: #1d72b8;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #155d8c;
+    }
+  </style>
 </head>
 <body>
-  <h1>Create a Support Ticket</h1>
-  <form action="/ticket/create" method="POST">
-    <label for="name">Name *</label><br>
-    <input type="text" id="name" name="name" required><br><br>
-    
-    <label for="reason">Ticket Reason *</label><br>
-    <textarea id="reason" name="reason" required></textarea><br><br>
-    
-    <label for="email">Email *</label><br>
-    <input type="email" id="email" name="email" required><br><br>
-    
-    <label for="phone">Phone (Optional)</label><br>
-    <input type="tel" id="phone" name="phone"><br><br>
-    
-    <label for="refid">Reference ID (Optional)</label><br>
-    <input type="text" id="refid" name="refid"><br><br>
-    
-    <button type="submit">Submit Ticket</button>
-  </form>
+  <div class="ticket-container">
+    <h1>Create a Support Ticket</h1>
+    <form action="/ticket/create" method="POST">
+      <label for="name">Name *</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="reason">Ticket Reason *</label>
+      <textarea id="reason" name="reason" rows="4" required></textarea>
+
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone (Optional)</label>
+      <input type="tel" id="phone" name="phone">
+
+      <label for="refid">Reference ID (Optional)</label>
+      <input type="text" id="refid" name="refid">
+
+      <button type="submit">Submit Ticket</button>
+    </form>
+  </div>
 </body>
 </html>
