@@ -1,22 +1,22 @@
+const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
-const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Serve static files from the ticket folder (for the form HTML and assets)
+// Serve any static files inside /ticket (e.g. CSS or JS you might add)
 app.use('/ticket', express.static(path.join(__dirname, 'ticket')));
 
-// GET /ticket/create — serve the form located at /ticket/index.html
+// Serve the form HTML when user visits /ticket/create
 app.get('/ticket/create', (req, res) => {
   res.sendFile(path.join(__dirname, 'ticket', 'index.html'));
 });
 
-// POST /ticket/create — handle ticket submission
+// Handle form submission POST to /ticket/create
 app.post('/ticket/create', async (req, res) => {
   const { name, reason, email, phone, refid } = req.body;
 
@@ -35,28 +35,26 @@ Reference ID: ${refid || 'N/A'}
   `;
 
   try {
-    let transporter = nodemailer.createTransport({
+    const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-      }
+        pass: process.env.EMAIL_PASS,
+      },
     });
 
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_USER,
       subject: 'New Support Ticket',
-      text: message
+      text: message,
     });
 
     res.send('Ticket submitted successfully! We will get back to you soon.');
   } catch (error) {
-    console.error(error);
+    console.error('Email sending error:', error);
     res.status(500).send('Error submitting ticket.');
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
